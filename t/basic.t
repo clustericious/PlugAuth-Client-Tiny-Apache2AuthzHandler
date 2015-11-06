@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use 5.012;
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 eval {
   # create some mock classes
@@ -17,7 +17,9 @@ eval {
   sub authz
   {
     my($self, $user, $method, $resource) = @_;
-    !!($user eq 'root' && $method eq 'GET' && $resource eq '/protected');
+    $DB::single = 1;
+    !! ($user eq 'root' && $method eq 'GET' && $resource eq '/protected')
+    || ($user eq 'root' && $method eq 'GET' && $resource eq '/myprefix/private');
   }
   
   $INC{'PlugAuth/Client/Tiny.pm'} = __FILE__;
@@ -92,4 +94,20 @@ subtest 'user is authorized' => sub {
   is $ret,          Apache2::Const::OK, 'Handler returns OK';
   is $req->{fail},  0,                  'No noted failure';
 
-}
+};
+
+subtest 'prefix' => sub {
+
+  local $ENV{PLUGAUTH_PREFIX} = '/myprefix';
+
+  my $req = Apache2::RequestRec->new(
+    user   => 'root',
+    method => 'GET',
+    uri    => '/private',
+  );
+
+  my $ret = PlugAuth::Client::Tiny::Apache2AuthzHandler::handler($req);
+  
+  is $ret,          Apache2::Const::OK, 'Handler returns OK';
+  is $req->{fail},  0,                  'No noted failure';
+};

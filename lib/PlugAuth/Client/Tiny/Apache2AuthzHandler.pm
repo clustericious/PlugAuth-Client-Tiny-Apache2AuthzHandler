@@ -54,10 +54,11 @@ sub handler
 {
   my($r) = @_;
   
-  my $auth = PlugAuth::Client::Tiny->new(url => $ENV{PLUGAUTH_URL});
+  my $auth   = PlugAuth::Client::Tiny->new(url => $ENV{PLUGAUTH_URL});
+  my $prefix = $ENV{PLUGAUTH_PREFIX} // '';
   
   my $user = $r->user;
-  if($user && $auth->authz($user, $r->method, $r->uri))
+  if($user && $auth->authz($user, $r->method, $prefix . $r->uri))
   {
     return Apache2::Const::OK;
   }
