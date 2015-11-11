@@ -17,6 +17,26 @@ In your httpd.conf:
 
 # DESCRIPTION
 
+This module provides PlugAuth authentication (via [PlugAuth::Tiny](https://metacpan.org/pod/PlugAuth::Tiny)) for your legacy Apache2
+appliation.
+
+# ENVIRONMENT
+
+## PLUGAUTH\_URL
+
+    PerlSetEnv PLUGAUTH_URL http://localhost:3001
+
+Specifies the URL for the PlugAuth server to authenticate against.
+
+## PLUGAUTH\_PREFIX
+
+    PerlSetEnv PLUGAUTH_PREFIX /myprefix
+
+Specifies a prefix for resource authorization requests.  What that means is that
+if you set `PLUGAUTH_PREFIX` to `/myprefix` as above, then when a client requests
+a path such as `/myrequestpath` the authentication request to [PlugAuth](https://metacpan.org/pod/PlugAuth) will be
+for the resource `/myprefix/myrequestpath`.
+
 # SEE ALSO
 
 - [PlugAuth::Client::Tiny::Apache2AuthenHandler](https://metacpan.org/pod/PlugAuth::Client::Tiny::Apache2AuthenHandler)

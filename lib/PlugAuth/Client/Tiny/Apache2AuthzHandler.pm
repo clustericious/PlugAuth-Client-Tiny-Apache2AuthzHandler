@@ -27,6 +27,26 @@ In your httpd.conf:
 
 =head1 DESCRIPTION
 
+This module provides PlugAuth authentication (via L<PlugAuth::Tiny>) for your legacy Apache2
+appliation.
+
+=head1 ENVIRONMENT
+
+=head2 PLUGAUTH_URL
+
+ PerlSetEnv PLUGAUTH_URL http://localhost:3001
+
+Specifies the URL for the PlugAuth server to authenticate against.
+
+=head2 PLUGAUTH_PREFIX
+
+ PerlSetEnv PLUGAUTH_PREFIX /myprefix
+
+Specifies a prefix for resource authorization requests.  What that means is that
+if you set C<PLUGAUTH_PREFIX> to C</myprefix> as above, then when a client requests
+a path such as C</myrequestpath> the authentication request to L<PlugAuth> will be
+for the resource C</myprefix/myrequestpath>.
+
 =head1 SEE ALSO
 
 =over 4

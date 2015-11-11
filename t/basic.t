@@ -56,7 +56,11 @@ eval {
     shift->{fail} = 1;
   }
   
-  $INC{'Apache2/RequestReq.pm'} = __FILE__;
+  $INC{'Apache2/RequestRec.pm'} = __FILE__;
+  
+  package Apache2::RequestUtil;
+  
+  $INC{'Apache2/RequestUtil.pm'} = __FILE__;
 };
 
 die $@ if $@;
