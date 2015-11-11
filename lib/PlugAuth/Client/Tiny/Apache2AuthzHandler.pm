@@ -5,6 +5,7 @@ use warnings;
 use 5.012;
 use PlugAuth::Client::Tiny;
 use Apache2::Access      ();
+use Apache2::RequestRec  ();
 use Apache2::RequestUtil ();
 use Apache2::Const -compile => qw(OK HTTP_UNAUTHORIZED);
 

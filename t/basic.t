@@ -17,7 +17,6 @@ eval {
   sub authz
   {
     my($self, $user, $method, $resource) = @_;
-    $DB::single = 1;
     !! ($user eq 'root' && $method eq 'GET' && $resource eq '/protected')
     || ($user eq 'root' && $method eq 'GET' && $resource eq '/myprefix/private');
   }
