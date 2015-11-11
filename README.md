@@ -18,7 +18,7 @@ In your httpd.conf:
 # DESCRIPTION
 
 This module provides PlugAuth authentication (via [PlugAuth::Tiny](https://metacpan.org/pod/PlugAuth::Tiny)) for your legacy Apache2
-appliation.
+application.
 
 # ENVIRONMENT
 

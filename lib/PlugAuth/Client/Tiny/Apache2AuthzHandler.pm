@@ -28,7 +28,7 @@ In your httpd.conf:
 =head1 DESCRIPTION
 
 This module provides PlugAuth authentication (via L<PlugAuth::Tiny>) for your legacy Apache2
-appliation.
+application.
 
 =head1 ENVIRONMENT
 
