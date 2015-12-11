@@ -1,4 +1,4 @@
-# PlugAuth::Client::Tiny::Apache2AuthzHandler
+# PlugAuth::Client::Tiny::Apache2AuthzHandler [![Build Status](https://secure.travis-ci.org/plicease/PlugAuth-Client-Tiny-Apache2AuthzHandler.png)](http://travis-ci.org/plicease/PlugAuth-Client-Tiny-Apache2AuthzHandler)
 
 Apache authorization handler for PlugAuth
 
