@@ -1,16 +1,10 @@
 language: perl
-sudo: false
-
-addons:
-  apt:
-    packages:
-      - libapr1-dev
-      - libaprutil1-dev
+sudo: true
 
 install:
   - perlbrew list
   - cpanm https://dist.wdlabs.com/Alien-Apache24-0.05.tar.gz -v
-  - alien-apache24-install-mod_perl
+  - echo 'y' | alien-apache24-install-mod_perl
   - dzil authordeps --missing | cpanm -n
   - dzil listdeps --missing | cpanm -n
 
