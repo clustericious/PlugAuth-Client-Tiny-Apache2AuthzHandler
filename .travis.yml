@@ -4,7 +4,7 @@ sudo: true
 install:
   - perlbrew list
   - bash corpus/travis_helper.sh
-  - cpanm https://plicease.github.io/dist/Alien-Apache24-0.05.tar.gz -v
+  - cpanm -n https://plicease.github.io/dist/Alien-Apache24-0.05.tar.gz
   - echo 'y' | alien-apache24-install-mod_perl
   - dzil authordeps --missing | cpanm -n
   - dzil listdeps --missing | cpanm -n
